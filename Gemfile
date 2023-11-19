@@ -26,6 +26,13 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'better_errors', '~> 2.10', '>= 2.10.1'
+
+gem 'devise', '~> 4.9', '>= 4.9.3'
+
+gem 'rubocop', '>= 1.0', '< 2.0'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -47,9 +54,12 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'rspec-rails'
 end
 
 group :development do
+  gem 'guard', '~> 2.18', '>= 2.18.1'
+  gem 'guard-livereload', '~> 2.5', '>= 2.5.2', require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
@@ -65,4 +75,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+
+  gem 'rails-controller-testing'
 end
+
+gem 'cancancan', '~> 3.5'
