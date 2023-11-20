@@ -1,7 +1,6 @@
 class User < ApplicationRecord
-    has_many :foods
-    has_many :recipes
+  has_many :foods
+  has_many :recipes
 
-    validates :name, presence: true
-  end
-  
+  validates :name, presence: true
+end
