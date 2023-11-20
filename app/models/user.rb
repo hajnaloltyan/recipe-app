@@ -1,2 +1,5 @@
 class User < ApplicationRecord
-end
+    has_many :foods
+    has_many :recipes
+  end
+  
