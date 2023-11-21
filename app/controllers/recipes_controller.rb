@@ -14,4 +14,8 @@ class RecipesController < ApplicationController
   def public_recipes
     @public_recipes = Recipe.where(is_public: true)
   end
+
+  def new
+    @recipe = Recipe.new
+  end
 end
