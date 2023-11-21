@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h2>My Recipes</h2>
+
+<div>
+  <% @recipes.each do |recipe| %>
+    <%= link_to recipe_path(recipe) do %>
+      <div>
+        <h3><%= recipe.name %></h3>
+        <p><%= recipe.description %></p>
+        <%= link_to 'Remove', recipe_path(recipe), method: :delete %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New recipe", new_recipe_path %>
