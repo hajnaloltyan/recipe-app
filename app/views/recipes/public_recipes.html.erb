@@ -6,7 +6,7 @@
   <% @public_recipes.each do |recipe| %>
     <%= link_to recipe_path(recipe) do %>
       <div>
-        <h3><%= recipe.title %></h3>
+        <h3><%= recipe.name %></h3>
         <p>By: <%= recipe.user.name %></p>
         <p>Total food items: <%= recipe.recipe_food.quantity %></p>
         <p>Total price: $<%= recipe.food.price %></p>
