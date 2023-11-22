@@ -15,9 +15,8 @@
       <%= link_to 'Recipe App', root_path, class: 'logo' %>
       <div>
         <% if user_signed_in? %>
-          <%= link_to 'Profile', profile_path %>
-          <%= link_to 'New Recipe', new_recipe_path %>
           <%= link_to 'My Recipes', recipes_path %>
+          <%= link_to 'New Recipe', new_recipe_path %>
         <% else %>
           <%= link_to 'Public Recipes', public_recipes_path %>
         <% end %>
