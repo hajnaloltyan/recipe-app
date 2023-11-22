@@ -31,6 +31,11 @@ nav {
   justify-content: space-between;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+}
+
 nav a {
   margin-right: 10px;
   text-decoration: none;
@@ -45,9 +50,4 @@ nav a {
 h2 {
   margin: 0;
   font-size: 28px;
-}
-
-a {
-  text-decoration: none;
-  color: #000;
 }
