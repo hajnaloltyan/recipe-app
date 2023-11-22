@@ -8,11 +8,9 @@
       <div>
         <h3><%= recipe.name %></h3>
         <p>By: <%= recipe.user.name %></p>
-        <p>Total food items: <%= recipe.recipe_food.quantity %></p>
-        <p>Total price: $<%= recipe.food.price %></p>
+        <p>Total food items:</p>
+        <p>Total price: $</p>
       </div>
     <% end %>
   <% end %>
 </div>
-
-<%= link_to "New recipe", new_recipe_path %>
