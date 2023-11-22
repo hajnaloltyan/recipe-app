@@ -20,6 +20,6 @@ Rails.application.routes.draw do
 
   # Shopping list route
   # If the shopping list pertains to a user, consider nesting it within a user resource or scope
-  get 'shopping_list', to: 'foods#shopping_list'
+  get '/foods/shopping_list', to: 'foods#shopping_list', as: :shopping_list
 
 end
