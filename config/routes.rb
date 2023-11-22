@@ -1,17 +1,25 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Routes for health checks
   get 'up' => 'rails/health#show', as: :rails_health_check
 
-  # Defines the root path route ("/")
-  # root "posts#index"
-
+  # Define the root of your application
   root 'recipes#index'
-  resources :recipes
 
+  # Recipes routes
+  resources :recipes do
+    resources :recipe_foods, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  end
+
+  # Public recipes route
   get 'public_recipes', to: 'recipes#public_recipes'
+
+  # Foods routes
+  resources :foods, only: [:index, :show, :new, :create, :destroy]
+
+  # Shopping list route
+  # If the shopping list pertains to a user, consider nesting it within a user resource or scope
+  get 'shopping_list', to: 'foods#shopping_list'
+
 end
