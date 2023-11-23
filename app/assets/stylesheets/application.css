@@ -79,7 +79,7 @@ p {
   background-color: #fff;
 }
 
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -93,11 +93,11 @@ p {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-.slider:before {
+.slider::before {
   position: absolute;
   content: "";
   height: 26px;
@@ -105,8 +105,8 @@ p {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -117,7 +117,7 @@ input:focus + .slider {
   box-shadow: 0 0 1px #52b93d;
 }
 
-input:checked + .slider:before {
+input::checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -127,7 +127,7 @@ input:checked + .slider:before {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.slider.round::before {
   border-radius: 50%;
 }
 
@@ -137,7 +137,7 @@ input:checked + .slider:before {
   padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
-  box-shadow: 3px 3px 0px 0px #000000cc;
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.8);
 }
 
 .flex-btn {
