@@ -1,27 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<h2><%= @recipe.name %></h2>
-<p>Preparation time: <%= @recipe.preparation_time %> hour(s)</p>
-<p>Cooking time: <%= @recipe.cooking_time %> hour(s)</p>
-<p>Description: <%= @recipe.description %></p>
+<section class="content">
+  <h2><%= @recipe.name %></h2>
+  <article class="recipe">
+    <div class="flex-btn">
+      <p>Preparation time: <%= @recipe.preparation_time %> hour(s)</p>
 
-<div class="toggle">
-  <% if @recipe.is_public? %>
-    <p>Public</p>
-  <% else %>
-    <p>Private</p>
-  <% end %>
+      <div class="toggle">
+        <% if @recipe.is_public? %>
+          <p>Public</p>
+        <% else %>
+          <p>Private</p>
+        <% end %>
 
-  <%= button_to toggle_public_recipe_path(@recipe), method: :patch, class: "switch" do %>
-    <%= check_box_tag 'is_public', '1', @recipe.is_public, class: 'checkbox' %>
-    <span class="slider round"></span>
-  <% end %>
-</div>
+        <%= button_to toggle_public_recipe_path(@recipe), method: :patch, class: "switch" do %>
+          <%= check_box_tag 'is_public', '1', @recipe.is_public, class: 'checkbox' %>
+          <span class="slider round"></span>
+        <% end %>
+      </div>
+    </div>
 
-<%= button_to 'Generate Shopping List' %>
-<%= button_to 'Add Ingredient' %>
+    <p>Cooking time: <%= @recipe.cooking_time %> hour(s)</p>
+    <p>Description: <%= @recipe.description %></p>
+  </article>
 
-<div>
-  <%= link_to "Back to recipes", recipes_path %>
-  <%= button_to "Delete this recipe", @recipe, method: :delete %>
-</div>
+  <div class="flex-btn">
+    <%= button_to 'Generate Shopping List', @shopping_list, class: "btn" %>
+    <%= button_to 'Add Ingredient', @foods, class: "btn" %>
+  </div>
+
+  <div class="flex-btn">
+    <%= link_to "Back to recipes", recipes_path, class: "btn" %>
+    <%= button_to "Delete this recipe", @recipe, method: :delete, class: "btn" %>
+  </div>
+</section>
