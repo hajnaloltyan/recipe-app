@@ -6,10 +6,14 @@ Rails.application.routes.draw do
   # Routes for health checks
   get 'up' => 'rails/health#show', as: :rails_health_check
 
-  # Define the root of your application
-  root 'recipes#index'
+  # Defines the root path route ("/")
+  # root "posts#index"
 
-  # Public recipes route
+  root 'recipes#public_recipes'
+  resources :recipes
+
+  devise_for :users
+
   get 'public_recipes', to: 'recipes#public_recipes'
 
   # Shopping list route
