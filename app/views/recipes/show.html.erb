@@ -5,20 +5,23 @@
 <p>Cooking time: <%= @recipe.cooking_time %> hour(s)</p>
 <p>Description: <%= @recipe.description %></p>
 
-<% if @recipe.is_public? %>
-  <p>This recipe is public</p>
-<% else %>
-  <p>This recipe is private</p>
-<% end %>
+<div class="toggle">
+  <% if @recipe.is_public? %>
+    <p>Public</p>
+  <% else %>
+    <p>Private</p>
+  <% end %>
 
-<%= button_to 'Toggle Public/Private', toggle_public_recipe_path(@recipe), method: :patch %>
+  <%= button_to toggle_public_recipe_path(@recipe), method: :patch, class: "switch" do %>
+    <%= check_box_tag 'is_public', '1', @recipe.is_public, class: 'checkbox' %>
+    <span class="slider round"></span>
+  <% end %>
+</div>
 
 <%= button_to 'Generate Shopping List' %>
 <%= button_to 'Add Ingredient' %>
 
 <div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
   <%= link_to "Back to recipes", recipes_path %>
-
   <%= button_to "Delete this recipe", @recipe, method: :delete %>
 </div>
