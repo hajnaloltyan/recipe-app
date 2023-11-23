@@ -1,3 +1,5 @@
+# config/routes.rb
+
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
@@ -7,19 +9,20 @@ Rails.application.routes.draw do
   # Define the root of your application
   root 'recipes#index'
 
+  # Public recipes route
+  get 'public_recipes', to: 'recipes#public_recipes'
+
+  # Shopping list route
+  # Define this before `resources :foods` to avoid conflict with `show` action
+  get '/foods/shopping_list', to: 'foods#shopping_list', as: :shopping_list
+
   # Recipes routes
   resources :recipes do
     resources :recipe_foods, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   end
 
-  # Public recipes route
-  get 'public_recipes', to: 'recipes#public_recipes'
-
   # Foods routes
+  # Define standard CRUD routes for foods
   resources :foods, only: [:index, :show, :new, :create, :destroy]
-
-  # Shopping list route
-  # If the shopping list pertains to a user, consider nesting it within a user resource or scope
-  get '/foods/shopping_list', to: 'foods#shopping_list', as: :shopping_list
 
 end
