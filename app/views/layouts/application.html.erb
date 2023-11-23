@@ -17,12 +17,15 @@
         <% if user_signed_in? %>
           <%= link_to 'My Recipes', recipes_path %>
           <%= link_to 'New Recipe', new_recipe_path %>
+          <%=link_to 'Foods', foods_path %>
+          <%= link_to 'Shopping List', shopping_list_path %>
         <% else %>
           <%= link_to 'Public Recipes', public_recipes_path %>
         <% end %>
       </div>
       <div>
         <% if user_signed_in? %>
+          <%= link_to 'Profile', edit_user_registration_path %>
           <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to 'Log in', new_user_session_path %>
