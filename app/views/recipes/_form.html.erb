@@ -12,6 +12,30 @@
   <% end %>
 
   <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :preparation_time, 'Preparation Time (h)' %>
+    <%= form.text_field :preparation_time %>
+  </div>
+
+  <div>
+    <%= form.label :cooking_time, 'Cooking Time (h)' %>
+    <%= form.text_field :cooking_time %>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :is_public, 'Public?' %>
+    <%= form.check_box :is_public %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
