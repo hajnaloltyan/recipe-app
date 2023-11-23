@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root 'recipes#public_recipes'
-  resources :recipes
 
   devise_for :users
 
@@ -23,6 +22,9 @@ Rails.application.routes.draw do
   # Recipes routes
   resources :recipes do
     resources :recipe_foods, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    member do
+      patch :toggle_public
+    end
   end
 
   # Foods routes
