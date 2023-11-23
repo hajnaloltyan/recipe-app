@@ -1,28 +1,35 @@
 class FoodsController < ApplicationController
+    before_action :authenticate_user!, only: [:shopping_list]
+  
     def index
-      @foods = Food.all
+      @foods = current_user.foods
     end
   
     def show
-      @food = Food.find(params[:id])
+      @food = current_user.foods.find(params[:id])
     end
-
+  
     def shopping_list
-        @missing_foods = calculate_missing_foods
-        @total_items = @missing_foods.count
-        @total_value = @missing_foods.sum { |item| item[:price] * item[:quantity_needed] }
+      @missing_foods = calculate_missing_foods
+      @total_items = @missing_foods.count
+      @total_value = @missing_foods.sum { |food| food[:price] * food[:quantity_needed] }
+    end
+  
+    private
+  
+    def calculate_missing_foods
+      user_recipes = current_user.recipes.includes(:foods)
+  
+      missing_foods = user_recipes.flat_map do |recipe|
+        recipe.recipe_foods.map do |recipe_food|
+          { 
+            food_name: recipe_food.food.name,
+            quantity_needed: recipe_food.quantity,
+            price: recipe_food.food.price
+          }
+        end
       end
-    
-      private
-    
-      def calculate_missing_foods
-        # Fetch our recipes, inventory items, and calculate what's missing
-        # We will need to adjust this logic to fit the application's models and associations
-        # This is just a pseudocode example
-        recipes = Recipe.includes(:foods).where(user: current_user)
-        inventory = current_user.inventory_foods # Assuming we have a model for inventory items
-      
-        # Logic to determine what's missing from inventory to fulfill the recipe requirements
-        # ...
-      end      
+      missing_foods
+    end
   end
+  
