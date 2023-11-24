@@ -16,7 +16,7 @@
         <td><%= number_to_currency(food.price) %></td>
         <td>
           <%= link_to 'Edit', edit_food_path(food) %> |
-          <%= link_to 'Delete', food_path(food), method: :delete, data: { confirm: 'Are you sure?', turbolinks: false } %>
+          <%= button_to 'Delete', food_path(food), method: :delete, form: { data: { confirm: 'Are you sure?' } }, class: "delete-button-foods" %>
         </td>
       </tr>
     <% end %>
