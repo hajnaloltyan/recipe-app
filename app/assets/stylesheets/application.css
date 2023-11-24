@@ -153,6 +153,22 @@ input:checked + .slider::before {
   padding: 20px 30px;
 }
 
+.delete-button-foods {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.delete-button-foods {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .recipe-list {
   display: flex;
   gap: 20px;

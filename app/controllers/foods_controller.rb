@@ -9,6 +9,34 @@ class FoodsController < ApplicationController
     @food = current_user.foods.find(params[:id])
   end
 
+  def new
+    @food = Food.new
+  end
+
+  def create
+    @food = current_user.foods.build(food_params)
+    if @food.save
+      redirect_to foods_path, notice: 'Food was successfully added.'
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @food = current_user.foods.find(params[:id])
+  end
+
+  def destroy
+    @food = current_user.foods.find(params[:id])
+    if @food.recipe_foods.any?
+      # handle as necessary, perhaps redirect with a warning
+      redirect_to foods_path, alert: 'Cannot delete food that is part of a recipe.'
+    else
+      @food.destroy
+      redirect_to foods_path, notice: 'Food was successfully deleted.'
+    end
+  end
+
   def shopping_list
     @missing_foods = calculate_missing_foods
     @total_items = @missing_foods.count
@@ -16,6 +44,10 @@ class FoodsController < ApplicationController
   end
 
   private
+
+  def food_params
+    params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
+  end
 
   def calculate_missing_foods
     user_recipes = current_user.recipes.includes(:foods)
