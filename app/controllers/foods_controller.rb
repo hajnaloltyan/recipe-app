@@ -9,6 +9,15 @@ class FoodsController < ApplicationController
     @food = current_user.foods.find(params[:id])
   end
 
+  def create
+    @food = current_user.foods.build(food_params)
+    if @food.save
+      redirect_to foods_path, notice: 'Food was successfully added.'
+    else
+      render :new
+    end
+  end
+
   def shopping_list
     @missing_foods = calculate_missing_foods
     @total_items = @missing_foods.count
@@ -16,6 +25,10 @@ class FoodsController < ApplicationController
   end
 
   private
+
+  def food_params
+    params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
+  end
 
   def calculate_missing_foods
     user_recipes = current_user.recipes.includes(:foods)
