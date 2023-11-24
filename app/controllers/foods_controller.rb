@@ -18,6 +18,16 @@ class FoodsController < ApplicationController
     end
   end
 
+  def edit
+    @food = current_user.foods.find(params[:id])
+  end
+
+  def destroy
+    @food = current_user.foods.find(params[:id])
+    @food.destroy
+    redirect_to foods_path, notice: 'Food was successfully deleted.'
+  end  
+
   def shopping_list
     @missing_foods = calculate_missing_foods
     @total_items = @missing_foods.count
