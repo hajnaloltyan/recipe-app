@@ -152,3 +152,11 @@ input:checked + .slider::before {
   flex-direction: column;
   padding: 20px 30px;
 }
+
+.delete-button-foods {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
