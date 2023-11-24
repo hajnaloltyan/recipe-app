@@ -5,11 +5,15 @@
 <div>
   <% @public_recipes.each do |recipe| %>
     <%= link_to recipe_path(recipe) do %>
-      <div>
-        <h3><%= recipe.name %></h3>
-        <p>By: <%= recipe.user.name %></p>
-        <p>Total food items:</p>
-        <p>Total price: $</p>
+      <div class="public-list">
+        <div>
+          <h3><%= recipe.name %></h3>
+          <h4>By: <%= recipe.user.name %></h4>
+        </div>
+        <div>
+          <p>Total food items:</p>
+          <p>Total price: $</p>
+        </div>
       </div>
     <% end %>
   <% end %>
