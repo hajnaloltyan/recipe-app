@@ -6,18 +6,20 @@
     <div class="flex-btn">
       <p>Preparation time: <%= @recipe.preparation_time %> hour(s)</p>
 
-      <div class="toggle">
-        <% if @recipe.is_public? %>
-          <p>Public</p>
-        <% else %>
-          <p>Private</p>
-        <% end %>
+      <% if current_user == @recipe.user %>
+        <div class="toggle">
+          <% if @recipe.is_public? %>
+            <p>Public</p>
+          <% else %>
+            <p>Private</p>
+          <% end %>
 
-        <%= button_to toggle_public_recipe_path(@recipe), method: :patch, class: "switch" do %>
-          <%= check_box_tag 'is_public', '1', @recipe.is_public, class: 'checkbox' %>
-          <span class="slider round"></span>
-        <% end %>
-      </div>
+          <%= button_to toggle_public_recipe_path(@recipe), method: :patch, class: "switch" do %>
+            <%= check_box_tag 'is_public', '1', @recipe.is_public, class: 'checkbox' %>
+            <span class="slider round"></span>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <p>Cooking time: <%= @recipe.cooking_time %> hour(s)</p>
