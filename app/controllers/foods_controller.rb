@@ -9,6 +9,10 @@ class FoodsController < ApplicationController
     @food = current_user.foods.find(params[:id])
   end
 
+  def new
+    @food = Food.new
+  end  
+
   def create
     @food = current_user.foods.build(food_params)
     if @food.save
