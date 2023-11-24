@@ -1,0 +1,15 @@
+one:
+  name: 'Tomato Pasta'
+  preparation_time: 1
+  cooking_time: 2
+  description: 'This is a description'
+  is_public: true
+  user: one
+
+two:
+  name: 'Chocolate Cake'
+  preparation_time: 0.5
+  cooking_time: 3
+  description: 'This is a description'
+  is_public: true
+  user: two
