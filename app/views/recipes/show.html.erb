@@ -28,7 +28,7 @@
 
   <div class="flex-btn">
     <%= button_to 'Generate Shopping List', @shopping_list, class: "btn" %>
-    <%= button_to 'Add Ingredient', @foods, class: "btn" %>
+    <%= link_to 'Add Ingredient', recipe_recipe_foods_path(@recipe), class: "btn" %>
   </div>
 
   <div class="flex-btn">
