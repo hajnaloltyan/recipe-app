@@ -11,7 +11,7 @@ class FoodsController < ApplicationController
 
   def new
     @food = Food.new
-  end  
+  end
 
   def create
     @food = current_user.foods.build(food_params)
@@ -35,7 +35,7 @@ class FoodsController < ApplicationController
       @food.destroy
       redirect_to foods_path, notice: 'Food was successfully deleted.'
     end
-  end  
+  end
 
   def shopping_list
     @missing_foods = calculate_missing_foods
