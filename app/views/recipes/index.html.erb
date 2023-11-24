@@ -5,10 +5,12 @@
 <div>
   <% @recipes.each do |recipe| %>
     <%= link_to recipe_path(recipe) do %>
-      <div>
-        <h3><%= recipe.name %></h3>
+      <div class="recipe-list">
+        <div>
+          <h3><%= recipe.name %></h3>
+          <%= link_to 'Remove', recipe_path(recipe), method: :delete %>
+        </div>
         <p><%= recipe.description %></p>
-        <%= link_to 'Remove', recipe_path(recipe), method: :delete %>
       </div>
     <% end %>
   <% end %>
