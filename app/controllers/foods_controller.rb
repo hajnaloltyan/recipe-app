@@ -30,7 +30,7 @@ class FoodsController < ApplicationController
     @food = current_user.foods.find(params[:id])
     @food.destroy
     redirect_to foods_path, notice: 'Food was successfully deleted.'
-  end  
+  end   
 
   def shopping_list
     @missing_foods = calculate_missing_foods
