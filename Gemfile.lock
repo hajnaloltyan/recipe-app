@@ -121,6 +121,11 @@ GEM
       http_parser.rb (~> 0)
     erubi (1.12.0)
     eventmachine (1.2.7)
+    factory_bot (6.4.2)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.2)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
     ffi (1.16.3)
     formatador (1.1.0)
     globalid (1.2.1)
@@ -303,6 +308,8 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     shellany (0.0.1)
+    shoulda-matchers (4.5.1)
+      activesupport (>= 4.2.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -349,6 +356,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9, >= 4.9.3)
+  factory_bot_rails
   guard (~> 2.18, >= 2.18.1)
   guard-livereload (~> 2.5, >= 2.5.2)
   importmap-rails
@@ -360,6 +368,7 @@ DEPENDENCIES
   rspec-rails
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
+  shoulda-matchers (~> 4.0)
   sprockets-rails
   stimulus-rails
   turbo-rails
