@@ -13,3 +13,11 @@ two:
   description: 'This is a description'
   is_public: true
   user: two
+
+three:
+  name: 'Pizza'
+  preparation_time: 0.5
+  cooking_time: 1
+  description: 'This is a description'
+  is_public: false
+  user: one
