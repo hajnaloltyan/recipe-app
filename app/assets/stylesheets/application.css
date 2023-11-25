@@ -36,6 +36,12 @@ nav {
   width: 60vw;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.menu-links, .auth-links {
+  display: flex;
+  gap: 10px;
 }
 
 a {
