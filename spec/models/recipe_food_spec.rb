@@ -12,9 +12,9 @@ RSpec.describe RecipeFood, type: :model do
   # Test the total_price method
   describe '#total_price' do
     let(:user) { create(:user) }
-    let(:food) { create(:food, user: user, price: 5) }
-    let(:recipe) { create(:recipe, user: user) }
-    let(:recipe_food) { create(:recipe_food, recipe: recipe, food: food, quantity: 3) }
+    let(:food) { create(:food, user:, price: 5) }
+    let(:recipe) { create(:recipe, user:) }
+    let(:recipe_food) { create(:recipe_food, recipe:, food:, quantity: 3) }
 
     it 'returns the correct total price based on quantity and food price' do
       expect(recipe_food.total_price).to eq(15) # 3 (quantity) * 5 (unit price)
