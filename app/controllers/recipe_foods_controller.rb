@@ -4,10 +4,6 @@ class RecipeFoodsController < ApplicationController
     @recipe_foods = @recipe.recipe_foods
   end
 
-  def show
-    @recipe_food = RecipeFood.find(params[:id])
-  end
-
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.new
@@ -18,22 +14,43 @@ class RecipeFoodsController < ApplicationController
     @food = Food.find_or_create_by(name: recipe_food_params[:food_name]) do |food|
       food.measurement_unit = recipe_food_params[:measurement_unit]
       food.price = recipe_food_params[:price]
+      food.user = current_user
+      food.quantity = recipe_food_params[:quantity]
     end
 
     if @food.save
       @recipe_food = @recipe.recipe_foods.build(food: @food, quantity: recipe_food_params[:quantity])
-
-      if @recipe_food.save
-        redirect_to @recipe, notice: 'Ingredient added to recipe successfully.'
-      else
-        puts "RecipeFood is not valid: #{@recipe_food.errors.full_messages}"
-        render :new
-      end
+      @recipe_food.save
+      redirect_to @recipe, notice: 'Ingredient added to recipe successfully.'
     else
       puts "Food could not be saved: #{@food.errors.full_messages}"
       @recipe_food = RecipeFood.new
       render :new
     end
+  end
+
+  def edit
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = @recipe.recipe_foods.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = @recipe.recipe_foods.find(params[:id])
+    @food = @recipe_food.food
+
+    if @food.update(name: recipe_food_params[:food_name], measurement_unit: recipe_food_params[:measurement_unit], price: recipe_food_params[:price]) && @recipe_food.update(quantity: recipe_food_params[:quantity])
+      redirect_to @recipe, notice: 'Ingredient updated successfully.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = @recipe.recipe_foods.find(params[:id])
+    @recipe_food.destroy
+    redirect_to @recipe, notice: 'Ingredient removed from recipe successfully.'
   end
 
   private

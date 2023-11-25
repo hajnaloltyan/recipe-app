@@ -1,10 +1,28 @@
 <h1>Editing recipe food</h1>
 
-<%= render "form", recipe_food: @recipe_food %>
+<%= form_with(model: [@recipe, @recipe_food], local: true) do |f| %>
+  <div class="field">
+    <%= f.label :food_name %>
+    <%= f.text_field :food_name, value: @recipe_food.food.name %>
+  </div>
 
-<br>
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, value: @recipe_food.quantity %>
+  </div>
 
-<div>
-  <%= link_to "Show this recipe food", @recipe_food %> |
-  <%= link_to "Back to recipe foods", recipe_foods_path %>
-</div>
+  <div class="field">
+    <%= f.label :measurement_unit %>
+    <%= f.text_field :measurement_unit, value: @recipe_food.food.measurement_unit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price, value: @recipe_food.food.price %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Update' %>
+  </div>
+<% end %>
+

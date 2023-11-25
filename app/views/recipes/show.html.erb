@@ -31,6 +31,30 @@
     <%= link_to 'Add Ingredient', recipe_recipe_foods_path(@recipe), class: "btn" %>
   </div>
 
+  <table>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe.recipe_foods.each do |recipe_food| %>
+        <tr>
+          <td><%= recipe_food.food.name %></td>
+          <td><%= recipe_food.quantity %></td>
+          <td><%= number_to_currency(recipe_food.total_price) %></td>
+          <td>
+            <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, recipe_food) %> |
+            <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
   <div class="flex-btn">
     <%= link_to "Back to recipes", recipes_path, class: "btn" %>
     <%= button_to "Delete this recipe", @recipe, method: :delete, class: "btn" %>
