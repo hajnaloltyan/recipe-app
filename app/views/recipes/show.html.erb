@@ -57,6 +57,9 @@
 
   <div class="flex-btn">
     <%= link_to "Back to recipes", recipes_path, class: "btn" %>
-    <%= button_to "Delete this recipe", @recipe, method: :delete, class: "btn" %>
+
+    <% if current_user == @recipe.user %>
+      <%= button_to "Delete this recipe", @recipe, method: :delete, class: "btn" %>
+    <% end %>
   </div>
 </section>
