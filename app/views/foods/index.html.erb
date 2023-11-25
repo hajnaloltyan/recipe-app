@@ -1,0 +1,26 @@
+<div class="add-food-container">
+    <%= link_to 'Add Food', new_food_path, class: 'btn add-food-btn' %>
+  </div>
+<table class="recipe-table">
+  <thead class="table-head">
+    <tr>
+      <th>Food</th>
+      <th>Measurement unit</th>
+      <th>Unit price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td><%= number_to_currency(food.price) %></td>
+        <td>
+          <%= link_to 'Edit', edit_food_path(food), class: 'table-btn' %> |
+          <%= button_to 'Delete', food_path(food), method: :delete, form: { data: { confirm: 'Are you sure?' } }, class: "delete-button-foods" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

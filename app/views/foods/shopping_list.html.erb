@@ -1,0 +1,23 @@
+<h2>Shopping List</h2>
+<div class="flex-btn">
+  <p>Amount of food items to buy: <%= @total_items %></p>
+  <p>Total value of food needed: <%= number_to_currency(@total_value) %></p>
+</div>
+<table class="recipe-table">
+  <thead class="table-head">
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @missing_foods.each do |item| %>
+      <tr>
+        <td><%= item[:food_name] %></td>
+        <td><%= item[:quantity_needed] %> grams</td> <!-- Adjust unit if needed -->
+        <td><%= number_to_currency(item[:price]) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

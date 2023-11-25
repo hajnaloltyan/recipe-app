@@ -1,0 +1,38 @@
+<%= form_with(model: [@recipe, @recipe_food], class: 'recipe-form') do |form| %>
+  <% if recipe_food.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(recipe_food.errors.count, "error") %> prohibited this recipe_food from being saved:</h2>
+
+      <ul>
+        <% recipe_food.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :food_name, 'Name' %>
+    <%= form.text_field :food_name %>
+  </div>
+
+  <div>
+    <%= form.label :measurement_unit, 'Measurement Unit' %>
+    <%= form.text_field :measurement_unit %>
+  </div>
+
+  <div>
+    <%= form.label :price, 'Price' %>
+    <%= form.number_field :price, step: 1 %>
+  </div>
+
+  <div>
+    <%= form.label :quantity, 'Quantity' %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div class="flex-btn">
+    <%= form.submit 'Add Ingredient', class: 'btn' %>
+    <%= link_to "Back to recipe foods", recipe_recipe_foods_path, class: 'btn' %>
+  </div>
+<% end %>

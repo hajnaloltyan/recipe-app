@@ -1,0 +1,7 @@
+one:
+  name: 'Hajnal'
+  email: 'hajnal@test.com'
+
+two:
+  name: 'Cristian'
+  email: 'cristian@test.com'

@@ -1,0 +1,22 @@
+<h2>Ingredients for <%= @recipe.name %></h2>
+
+<table class="recipe-table">
+  <thead class="table-head">
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td><%= recipe_food.food.name %></td>
+        <td><%= recipe_food.quantity %></td>
+        <td><%= number_to_currency(recipe_food.total_price) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn' %>

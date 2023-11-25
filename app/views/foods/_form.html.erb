@@ -1,0 +1,27 @@
+<%= form_with(model: @food, local: true, class: 'recipe-form') do |form| %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, id: :food_name %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :measurement_unit %>
+      <%= form.text_field :measurement_unit, id: :food_measurement_unit %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.number_field :price, id: :food_price, step: :any %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :quantity %>
+      <%= form.number_field :quantity, id: :food_quantity %>
+    </div>
+  
+    <div class="actions flex-btn">
+      <%= form.submit class: 'btn' %>
+      <%= link_to "Back to Food", foods_path, class: 'btn' %>
+    </div>
+  <% end %>
+  
