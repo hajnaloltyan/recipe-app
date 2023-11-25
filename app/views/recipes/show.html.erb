@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <section class="content">
   <h2><%= @recipe.name %></h2>
   <article class="recipe">
@@ -28,11 +26,40 @@
 
   <div class="flex-btn">
     <%= button_to 'Generate Shopping List', @shopping_list, class: "btn" %>
-    <%= button_to 'Add Ingredient', @foods, class: "btn" %>
+    <% if current_user == @recipe.user %>
+      <%= link_to 'Add Ingredient', recipe_recipe_foods_path(@recipe), class: "btn" %>
+    <% end %>
   </div>
+
+  <table class="recipe-table">
+    <thead class="table-head">
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe.recipe_foods.each do |recipe_food| %>
+        <tr>
+          <td><%= recipe_food.food.name %></td>
+          <td><%= recipe_food.quantity %></td>
+          <td><%= number_to_currency(recipe_food.total_price) %></td>
+          <td>
+            <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, recipe_food), class: 'table-btn' %> |
+            <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, class: 'table-btn' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
   <div class="flex-btn">
     <%= link_to "Back to recipes", recipes_path, class: "btn" %>
-    <%= button_to "Delete this recipe", @recipe, method: :delete, class: "btn" %>
+
+    <% if current_user == @recipe.user %>
+      <%= button_to "Delete this recipe", @recipe, method: :delete, class: "btn" %>
+    <% end %>
   </div>
 </section>

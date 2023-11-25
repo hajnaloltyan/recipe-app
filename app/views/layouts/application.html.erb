@@ -35,11 +35,11 @@
       </div>
     </nav>
     
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
     <% if alert %>
-      <p class="alert"><%= alert %></p>
+      <p style="color: red"><%= alert %></p>
+    <% end %>
+    <% if notice %>
+      <p style="color: green"><%= notice %></p>
     <% end %>
 
     <%= yield %>

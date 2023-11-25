@@ -1,4 +1,4 @@
-<%= form_with(model: @food, local: true) do |form| %>
+<%= form_with(model: @food, local: true, class: 'recipe-form') do |form| %>
     <div class="field">
       <%= form.label :name %>
       <%= form.text_field :name, id: :food_name %>
@@ -19,8 +19,9 @@
       <%= form.number_field :quantity, id: :food_quantity %>
     </div>
   
-    <div class="actions">
-      <%= form.submit %>
+    <div class="actions flex-btn">
+      <%= form.submit class: 'btn' %>
+      <%= link_to "Back to Food", foods_path, class: 'btn' %>
     </div>
   <% end %>
   

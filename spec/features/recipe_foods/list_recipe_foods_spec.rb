@@ -14,7 +14,7 @@ RSpec.feature 'List Recipe Foods', type: :feature do
 
     visit recipe_recipe_foods_path(recipe)
 
-    expect(page).to have_content("Recipe Foods for #{recipe.name}")
+    expect(page).to have_content("Ingredients for #{recipe.name}")
     expect(page).to have_selector('tr', count: 4) # Including header row
 
     click_link 'Add Ingredient'
