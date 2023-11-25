@@ -11,8 +11,8 @@
           <h4>By: <%= recipe.user.name %></h4>
         </div>
         <div>
-          <p>Total food items:</p>
-          <p>Total price: $</p>
+          <p>Total food items: <%= recipe.recipe_foods.count %></p>
+          <p>Total price: $ <%= recipe.recipe_foods.sum(&:total_price) %></p>
         </div>
       </div>
     <% end %>
