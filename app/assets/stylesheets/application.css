@@ -198,7 +198,8 @@ input:checked + .slider::before {
   padding: 5px;
 }
 
-.recipe-table td, .recipe-table th {
+.recipe-table td,
+.recipe-table th {
   border: 1px solid #000;
   padding: 8px;
 }
@@ -212,5 +213,4 @@ input:checked + .slider::before {
   display: inline-block;
   text-decoration: underline;
   cursor: pointer;
-  inherits: none;
 }
