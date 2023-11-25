@@ -6,13 +6,13 @@ class FoodsController < ApplicationController
   end
 
   def show
-    if params[:id] == "shopping_list"
+    if params[:id] == 'shopping_list'
       shopping_list
       render :shopping_list
     else
       @food = current_user.foods.find(params[:id])
     end
-  end  
+  end
 
   def new
     @food = Food.new
