@@ -39,7 +39,8 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = @recipe.recipe_foods.find(params[:id])
     @food = @recipe_food.food
 
-    if @food.update(name: recipe_food_params[:food_name], measurement_unit: recipe_food_params[:measurement_unit], price: recipe_food_params[:price]) && @recipe_food.update(quantity: recipe_food_params[:quantity])
+    if @food.update(name: recipe_food_params[:food_name], measurement_unit: recipe_food_params[:measurement_unit],
+                    price: recipe_food_params[:price]) && @recipe_food.update(quantity: recipe_food_params[:quantity])
       redirect_to @recipe, notice: 'Ingredient updated successfully.'
     else
       render :edit
