@@ -149,7 +149,7 @@ For running tests:
 👤 **Hajnalka Oltyan**
 
 - GitHub: [@hajnaloltyan](https://github.com/hajnaloltyan)
-- LinkedIn: [Hajnal Oltyan](https://www.linkedin.com/in/hajnalka-oltyan/)
+- LinkedIn: [Hajnal Oltyan](https://www.linkedin.com/in/hajnaloltyan)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
