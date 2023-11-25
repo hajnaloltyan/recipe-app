@@ -36,7 +36,10 @@
     </nav>
     
     <% if alert %>
-      <p class="alert"><%= alert %></p>
+      <p style="color: red"><%= alert %></p>
+    <% end %>
+    <% if notice %>
+      <p style="color: green"><%= notice %></p>
     <% end %>
 
     <%= yield %>
