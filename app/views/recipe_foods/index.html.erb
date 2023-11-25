@@ -1,12 +1,11 @@
 <h1>Ingredients for <%= @recipe.name %></h1>
 
-<table>
-  <thead>
+<table class="recipe-table">
+  <thead class="table-head">
     <tr>
       <th>Food</th>
       <th>Quantity</th>
       <th>Value</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -15,13 +14,9 @@
         <td><%= recipe_food.food.name %></td>
         <td><%= recipe_food.quantity %></td>
         <td><%= number_to_currency(recipe_food.total_price) %></td>
-        <td>
-          <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, recipe_food) %> |
-          <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe) %>
+<%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn' %>

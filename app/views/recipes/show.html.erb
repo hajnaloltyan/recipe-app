@@ -28,11 +28,13 @@
 
   <div class="flex-btn">
     <%= button_to 'Generate Shopping List', @shopping_list, class: "btn" %>
-    <%= link_to 'Add Ingredient', recipe_recipe_foods_path(@recipe), class: "btn" %>
+    <% if current_user == @recipe.user %>
+      <%= link_to 'Add Ingredient', recipe_recipe_foods_path(@recipe), class: "btn" %>
+    <% end %>
   </div>
 
-  <table>
-    <thead>
+  <table class="recipe-table">
+    <thead class="table-head">
       <tr>
         <th>Food</th>
         <th>Quantity</th>
@@ -47,8 +49,8 @@
           <td><%= recipe_food.quantity %></td>
           <td><%= number_to_currency(recipe_food.total_price) %></td>
           <td>
-            <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, recipe_food) %> |
-            <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, recipe_food), class: 'table-btn' %> |
+            <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, class: 'table-btn' %>
           </td>
         </tr>
       <% end %>
