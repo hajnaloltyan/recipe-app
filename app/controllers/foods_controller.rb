@@ -2,7 +2,7 @@ class FoodsController < ApplicationController
   before_action :authenticate_user!, only: [:shopping_list]
 
   def index
-    @foods = current_user.foods
+    @foods = current_user.foods.includes(:recipe_foods)
   end
 
   def show
@@ -29,7 +29,6 @@ class FoodsController < ApplicationController
   def destroy
     @food = current_user.foods.find(params[:id])
     if @food.recipe_foods.any?
-      # handle as necessary, perhaps redirect with a warning
       redirect_to foods_path, alert: 'Cannot delete food that is part of a recipe.'
     else
       @food.destroy
@@ -50,7 +49,8 @@ class FoodsController < ApplicationController
   end
 
   def calculate_missing_foods
-    user_recipes = current_user.recipes.includes(:foods)
+    # This is where the N+1 query problem can arise, so it should include both :foods and :recipe_foods
+    user_recipes = current_user.recipes.includes(recipe_foods: :food)
 
     user_recipes.flat_map do |recipe|
       recipe.recipe_foods.map do |recipe_food|
