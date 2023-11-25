@@ -33,7 +33,7 @@ nav {
   padding: 20px 30px;
   font-size: 18px;
   font-weight: bold;
-  width: 60vw;
+  width: 80vw;
   display: flex;
   justify-content: space-between;
 }
@@ -146,6 +146,13 @@ input:checked + .slider::before {
   margin-top: 30px;
 }
 
+.flex-content {
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+  margin-top: 20px;
+}
+
 .recipe {
   display: flex;
   flex-direction: column;
@@ -188,7 +195,7 @@ input:checked + .slider::before {
 
 .recipe-table {
   border: 1px solid #000;
-  width: 30vw;
+  width: 60vw;
   margin: 20px 0;
   height: 20vh;
 }

@@ -1,7 +1,7 @@
 <section class="content">
   <h2><%= @recipe.name %></h2>
   <article class="recipe">
-    <div class="flex-btn">
+    <div class="flex-content">
       <p>Preparation time: <%= @recipe.preparation_time %> hour(s)</p>
 
       <% if current_user == @recipe.user %>
@@ -24,8 +24,8 @@
     <p>Description: <%= @recipe.description %></p>
   </article>
 
-  <div class="flex-btn">
-    <%= button_to 'Generate Shopping List', @shopping_list, class: "btn" %>
+  <div class="flex-content">
+    <%= button_to 'Generate Shopping List', shopping_list_path(@shopping_list), class: "btn" %>
     <% if current_user == @recipe.user %>
       <%= link_to 'Add Ingredient', recipe_recipe_foods_path(@recipe), class: "btn" %>
     <% end %>
@@ -55,7 +55,7 @@
     </tbody>
   </table>
 
-  <div class="flex-btn">
+  <div class="flex-content">
     <%= link_to "Back to recipes", recipes_path, class: "btn" %>
 
     <% if current_user == @recipe.user %>

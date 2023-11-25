@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   # Shopping list route
   # Define this before `resources :foods` to avoid conflict with `show` action
-  get '/foods/shopping_list', to: 'foods#shopping_list', as: :shopping_list
+  post '/foods/shopping_list', to: 'foods#shopping_list', as: :shopping_list
 
   # Recipes routes
   resources :recipes do
