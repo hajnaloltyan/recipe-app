@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
 
   # Eager load the recipe_foods and foods to prevent N+1 query problems
   def index
-    @recipes = current_user.recipes.includes(:recipe_foods => :food)
+    @recipes = current_user.recipes.includes(recipe_foods: :food)
   end
 
   def show
@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
 
   # Eager load the recipe_foods and foods for public recipes
   def public_recipes
-    @public_recipes = Recipe.where(is_public: true).includes(:recipe_foods => :food)
+    @public_recipes = Recipe.where(is_public: true).includes(recipe_foods: :food)
   end
 
   def new
@@ -51,6 +51,6 @@ class RecipesController < ApplicationController
 
   # Ensure that when we find a recipe, we include the recipe_foods and foods to prevent N+1 queries
   def set_recipe
-    @recipe = Recipe.includes(:recipe_foods => :food).find(params[:id])
+    @recipe = Recipe.includes(recipe_foods: :food).find(params[:id])
   end
 end
